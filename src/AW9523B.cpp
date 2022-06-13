@@ -17,7 +17,7 @@ AW9523B::AW9523B(TwoWire *i2c, int8_t ad0, int8_t ad1)
     // Create an I2C device for the I2C related operations
     i2cdevice = new Adafruit_I2CDevice(AW9523B_I2C_BASE_ADDRESS + (ad1 << 1) + ad0, i2c);
     instance = this;
-    // begin();
+    begin();
 }
 
 AW9523B::~AW9523B() {
@@ -310,7 +310,7 @@ void AW9523B::setPinMode(uint8_t port, uint8_t pinMask, uint8_t flag) {
         config = readByte(AW9523B_ADDR_LEDMODE0); 
     }
     else if(port == 1) {
-        config = readByte(AW9523B_ADDR_LEDMODE0); 
+        config = readByte(AW9523B_ADDR_LEDMODE1); 
     }
     else {
         logErr("Wrong port");
